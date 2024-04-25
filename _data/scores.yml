@@ -1,0 +1,27 @@
+- name: 机器学习与数据挖掘
+  grade: 100
+  rank: 1/97
+- name: 计算机网络
+  grade: 98 
+  rank: 3/79
+- name: 数据库系统原理 
+  grade: 97
+  rank: 22/76
+- name: 操作系统原理
+  grade: 91
+  rank: 9/85
+- name: 人工智能
+  grade: 96
+  rank: 9/73
+- name: 超级计算机原理与操作
+  grade: 97
+  rank: 
+- name: 计算机组成原理
+  grade: 93
+  rank: 15/77
+- name: 算法设计与分析
+  grade: 99
+  rank: 
+- name: 计算机图形学
+  grade: 90
+  rank: 

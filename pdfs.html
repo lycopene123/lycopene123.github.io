@@ -1,0 +1,98 @@
+---
+title: 课程项目&作业
+layout: default
+description: 这里记录了本人完成的一些课程项目和作业
+header-img: "img/home-bg-o.jpg"
+---
+
+<!-- Page Header -->
+<!-- <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')"> -->
+<header class="intro-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading" id="tag-heading">
+                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- Main Content -->
+<div class="container">
+	<!-- <div class="row"> -->
+		<!-- <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"> -->
+
+<body>
+	<main>
+
+		<!-- 标签云 -->
+		<div id='tag_cloud' class="tags">
+			{% for tag in site.tags %}
+			<a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }}</a>
+			{% endfor %}
+		</div>
+
+		<!-- <blockquote class="tag-comments">
+			标签命名规范：
+				<li>行业观察、职位、公司优先使用中文</li>
+				<li>外国产品、术语优先使用英文</li>
+		</blockquote> -->
+
+		<!-- 标签列表 -->
+		{% for tag in site.tags %}
+		<div class="one-tag-list">
+
+			<!-- 这个是标签头 --> 
+			<hr>
+			<span class="fa fa-tag listing-seperator" id="{{ tag[0] }}" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+				<span class="tag-text" style="font-size: 1.1em;">{{ tag[0] }}</span>
+
+				{% assign score = site.data.scores | where: "name", tag[0] | first %}
+				{% if score %}
+					<span class="tag-text" style="margin-left: auto; font-size: 0.9em;"> 实验成绩: {{ score.grade }} 
+						{% if score.rank %}
+						<span style="font-size: 0.675em;">&nbsp({{ score.rank }})</span>
+						{% endif %}
+					</span>
+				{% else %}
+					<span class="tag-text" style="margin-left: auto; font-size: 0.9em;"> 未结课 </span>
+				{% endif %}
+			</span>
+
+			
+			<ul class='videos'>
+			{% for post in tag[1] %}
+
+				<li>
+					<a href="{{ post.pdf_url }}">
+						<h3 style="font-size: 1.075em;">{{ post.title }}</h3>
+						
+						{% if post.description %}
+							<time>
+								{{ post.description }}
+							</time>
+						{% else if %}
+							<time>
+							</time>
+						{% endif %}
+
+						<!-- <img src='/{{ post.preview_image_url }}' /> -->
+						<div class="container2">
+							<img src='/{{ post.preview_image_url }}' alt="Image">
+						</div>
+					</a>
+				</li>
+			{% endfor %}
+			</ul>
+
+		</div>
+		{% endfor %}
+	</main>
+</body>
+		<!-- </div> -->
+	<!-- </div> -->
+</div>

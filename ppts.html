@@ -1,0 +1,82 @@
+---
+title: 组会&分享会
+layout: default
+description: 这里记录了本人制作的一些组会和分享会的材料
+header-img: "img/home-bg-o2.jpg"
+---
+
+<!-- Page Header -->
+<!-- <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')"> -->
+<header class="intro-header" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');">
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading" id="tag-heading">
+                    <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+
+<body>
+	<main>
+		{% assign ppt_tags = site.ppts | map: 'tags' | flatten | uniq %}
+		
+		<!-- 标签云 -->
+		<div id='tag_cloud' class="tags">
+			{% for tag in ppt_tags %}
+				{% assign count = 0 %}
+				{% for ppt in site.ppts %}
+					{% if ppt.tags contains tag %}
+						{% assign count = count | plus: 1 %}
+					{% endif %}
+				{% endfor %}
+				<a href="#{{ tag | slugify }}" title="{{ tag }}" rel="{{ count }}">{{ tag }}</a>
+			{% endfor %}
+		</div>
+
+		<!-- 标签列表 -->
+		{% for tag in ppt_tags %}
+			<div class="one-tag-list">
+				<!-- 这个是标签头 --> 
+				<hr>
+				<span class="fa fa-tag listing-seperator" id="{{ tag | slugify }}">
+					<span class="tag-text">{{ tag }}</span>
+				</span>
+				
+				<ul class='videos'>
+				{% for ppt in site.ppts %}
+					{% if ppt.tags contains tag %}
+						<li>
+							<a href="{{ ppt.pdf_url }}">
+								<h3>{{ ppt.title }}</h3>
+								
+								{% if ppt.description %}
+									<time>
+										{{ ppt.description }}
+									</time>
+								{% else if %}
+									<time>
+									</time>
+								{% endif %}
+
+								<!-- <img src='/{{ ppt.preview_image_url }}' /> -->
+								<div class="container2">
+									<img src='/{{ ppt.preview_image_url }}' alt="Image">
+								</div>
+							</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+				</ul>
+
+			</div>
+		{% endfor %}
+	</main>
+</body>
+</div>
