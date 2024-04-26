@@ -19,13 +19,22 @@
                     <!-- <li>
                         <a href="{{ site.baseurl }}/">Home</a>
                     </li> -->
-                    {% for page in site.pages %}
+                    <!-- {% for page in site.pages %}
                         {% if page.nav_include %}
                         <li>
                             <a href="{{ page.url | prepend: site.baseurl }}" style="font-weight: bold; font-size: 18px;">{{ page.title }}</a>
                         </li>
                         {% endif %}
-                    {% endfor %}
+                    {% endfor %} -->
+                    <li>
+                        <a href="{{ '/' | prepend: site.baseurl }}" style="font-weight: bold; font-size: 18px;">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{ '/pdfs.html' | prepend: site.baseurl }}" style="font-weight: bold; font-size: 18px;">课程作业&项目</a>
+                    </li>
+                    <li>
+                        <a href="{{ '/ppts.html' | prepend: site.baseurl }}" style="font-weight: bold; font-size: 18px;">组会&分享会</a>
+                    </li>
                 </ul>
             </div>
         </div>
