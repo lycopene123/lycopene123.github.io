@@ -20,17 +20,11 @@
                         <a href="{{ site.baseurl }}/">Home</a>
                     </li> -->
                     {% for page in site.pages %}
-                    {% if page.title %}
-                    <li>
-                        <!-- <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a> -->
-                        <a href="{{ page.url | prepend: site.baseurl }}" style="font-weight: bold; font-size: 18px;">{{ page.title }}</a>
-                        <!-- <a href="{{ page.url | prepend: site.baseurl }}" style="font-weight: bold; font-size: 18px; text-decoration: underline;">{{ page.title }}</a> -->
-                    </li>
-                    {else}
+                        {% if page.nav_include %}
                         <li>
-                            <a href="{{ page.url | prepend: site.baseurl }}" style="font-weight: bold; font-size: 18px;">你好</a>
+                            <a href="{{ page.url | prepend: site.baseurl }}" style="font-weight: bold; font-size: 18px;">{{ page.title }}</a>
                         </li>
-                    {% endif %}
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>
